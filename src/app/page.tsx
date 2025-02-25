@@ -1,7 +1,5 @@
 "use client"
 
-import { log } from "console";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
