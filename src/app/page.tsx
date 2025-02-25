@@ -63,6 +63,23 @@ export default function Home() {
     setDomino(initialDomino)
   }
 
+  const removeDuplicate = () => {
+    setDomino((prevDomino) => {
+      const countMap = new Map();
+
+      prevDomino.forEach(([a, b]) => {
+        const key = a < b ? `${a}-${b}` : `${b}-${a}`;
+        countMap.set(key, (countMap.get(key) || 0) + 1);
+      });
+
+      return prevDomino.filter(([a, b]) => {
+        const key = a < b ? `${a}-${b}` : `${b}-${a}`;
+        return countMap.get(key) === 1;
+      });
+    });
+  };
+
+
   const removeTotalNumber = () => {
     console.log('removetotalNumber');
 
